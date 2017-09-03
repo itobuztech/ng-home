@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    children: []
+  	path: 'home', loadChildren: 'app/home/home.module#HomeModule'
   },
-  {
-  	path: 'home', loadchildren: 'app/home/home.module#HomeModule'
-  }
+  { path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  // { path: '**', component: NotfoundComponent }
 ];
 
 @NgModule({
