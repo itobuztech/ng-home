@@ -1,0 +1,17 @@
+{
+  "name": "ng-home",
+  "version": "1.0.0",
+  "description": "angular templates for generator-ng-itobuz",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itobuztech/ng-home.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itobuztech/ng-home/issues"
+  },
+  "homepage": "https://github.com/itobuztech/ng-home#readme"
+}
