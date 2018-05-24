@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class HomeService {
@@ -13,7 +12,9 @@ export class HomeService {
 
   getUsers() {
     return this.http.get('/users')
-      .map(res => res)
-      .catch(err => Observable.throw(err));
+      .pipe(
+        map(res => res),
+        catchError(err => Observable.throw(err))
+      )
   }
 }

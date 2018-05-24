@@ -6,12 +6,9 @@ import {
   HttpInterceptor,
   HttpErrorResponse
 } from '@angular/common/http';
-
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
-
 import { Router } from '@angular/router';
+import { map, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 // import { AuthService } from './auth.service';
 import { environment } from '../environments/environment';
@@ -35,14 +32,16 @@ export class AppInterceptor implements HttpInterceptor {
     });
 
     return next.handle(authRequest)
-      .catch(err => {
-        if (err instanceof HttpErrorResponse && err.status === 0) {
-          console.log('Check Your Internet Connection And Try again Later');
-        } else if (err instanceof HttpErrorResponse && err.status === 401) {
-          // auth.setToken(null);
-          // this.router.navigate(['/', 'login']);
-        }
-        return Observable.throw(err);
-      });
+      .pipe(
+        catchError(err => {
+          if (err instanceof HttpErrorResponse && err.status === 0) {
+            console.log('Check Your Internet Connection And Try again Later');
+          } else if (err instanceof HttpErrorResponse && err.status === 401) {
+            // auth.setToken(null);
+            // this.router.navigate(['/', 'login']);
+          }
+          return Observable.throw(err);
+        })
+      );
   }
 }
