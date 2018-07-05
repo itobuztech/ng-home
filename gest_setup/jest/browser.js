@@ -1,3 +1,4 @@
+require('jest-preset-angular');
 require('dotenv').config()
 const puppeteer = require('puppeteer')
 const { toMatchImageSnapshot } = require('jest-image-snapshot')
