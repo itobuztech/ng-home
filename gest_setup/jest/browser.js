@@ -5,7 +5,7 @@ const { toMatchImageSnapshot } = require('jest-image-snapshot')
 
 beforeAll(async () => {
   jest.setTimeout(2400000); // 40mn by test
-  // expect.extend({ toMatchImageSnapshot })
+  expect.extend({ toMatchImageSnapshot })
 
   browser = await puppeteer.launch(
     parseInt(process.env.DEBUG)
