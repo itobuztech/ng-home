@@ -14,7 +14,7 @@ describe("Desktop", async () => {
   it("Landing Page", async () => {
     await page.goto(process.env.HOSTURL, {waitUntil: "networkidle0"})
     const screenshot = await screenshotDomElm({
-        selector: '#sfdiv > div',
+        selector: '.sidebar',
         padding: 0
     });
     expect(screenshot).toMatchImageSnapshot()
