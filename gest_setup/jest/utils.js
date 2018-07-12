@@ -2,9 +2,7 @@ const fs = require('fs')
 const mkdirp = require('mkdirp')
 const path = require('path')
 
-const globals = require('./jest.config').globals
-
-let url = globals.api
+let url = process.env.APIENDPOINT
 const SNAPSHOTS_DIR = '__api_snapshots__'
 
 let snapshotsDir = path.join(process.cwd(), '__tests__', SNAPSHOTS_DIR)
